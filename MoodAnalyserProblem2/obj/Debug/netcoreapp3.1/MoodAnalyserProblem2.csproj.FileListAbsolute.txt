@@ -1,0 +1,13 @@
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\bin\Debug\netcoreapp3.1\MoodAnalyserProblem2.exe
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\bin\Debug\netcoreapp3.1\MoodAnalyserProblem2.deps.json
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\bin\Debug\netcoreapp3.1\MoodAnalyserProblem2.runtimeconfig.json
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\bin\Debug\netcoreapp3.1\MoodAnalyserProblem2.runtimeconfig.dev.json
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\bin\Debug\netcoreapp3.1\MoodAnalyserProblem2.dll
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\bin\Debug\netcoreapp3.1\MoodAnalyserProblem2.pdb
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\obj\Debug\netcoreapp3.1\MoodAnalyserProblem2.csprojAssemblyReference.cache
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\obj\Debug\netcoreapp3.1\MoodAnalyserProblem2.AssemblyInfoInputs.cache
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\obj\Debug\netcoreapp3.1\MoodAnalyserProblem2.AssemblyInfo.cs
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\obj\Debug\netcoreapp3.1\MoodAnalyserProblem2.csproj.CoreCompileInputs.cache
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\obj\Debug\netcoreapp3.1\MoodAnalyserProblem2.dll
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\obj\Debug\netcoreapp3.1\MoodAnalyserProblem2.pdb
+C:\Users\saiku\source\repos\MoodAnalyserProblem2\MoodAnalyserProblem2\obj\Debug\netcoreapp3.1\MoodAnalyserProblem2.genruntimeconfig.cache

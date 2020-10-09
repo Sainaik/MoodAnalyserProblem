@@ -9,12 +9,12 @@ namespace MoodAnalyserTest
     public class UnitTest1
     {
         [TestMethod]
-        public void AnalyseMood_ShouldReturn_Sad()
+        public void AnalyseMood_ShouldReturn_Happy_givenNULL()
         {
             //Arraneg
-            string message = "I am in Sad Mood";
+            string message = null;
 
-            string expected = "Sad";
+            string expected = "Happy";
 
             MoodAnalyser obj = new MoodAnalyser(message);
 
@@ -26,23 +26,5 @@ namespace MoodAnalyserTest
 
         }
 
-
-        [TestMethod]
-        public void AnalyseMood_ShouldReturn_Happy()
-        {
-            //Arraneg
-            string message = "I am in Happy Mood";
-
-            string expected = "Happy";
-
-            MoodAnalyser obj = new MoodAnalyser(message);
-
-            //Act
-            string actual = obj.AnalyseMood();
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-
-        }
     }
 }

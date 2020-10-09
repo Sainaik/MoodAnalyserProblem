@@ -9,22 +9,49 @@ namespace MoodAnalyserTest
     public class UnitTest1
     {
         [TestMethod]
-        public void AnalyseMood_ShouldReturn_Happy_givenNULL()
+        public void AnalyseMood_ShouldReturn_CustomExceptionTypeNULL_givenNULL()
         {
-            //Arraneg
-            string message = null;
+            
+            string expected = "Mood should not be NULL";
 
-            string expected = "Happy";
+            try
+            {
+                string message = null;
+                MoodAnalyser obj = new MoodAnalyser(message);
+                string actual = obj.AnalyseMood();
 
-            MoodAnalyser obj = new MoodAnalyser(message);
-
-            //Act
-            string actual =obj.AnalyseMood();
-
-            //Assert
-            Assert.AreEqual(expected, actual);
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
 
         }
 
+
+
+        [TestMethod]
+        public void AnalyseMood_ShouldReturn_CustomExceptionTypeEmpty_givenEmpty()
+        {
+            //Arraneg
+
+
+            string expected = "Mood should not be empty";
+
+            try
+            {
+                string message = "";
+                MoodAnalyser obj = new MoodAnalyser(message);
+                string actual = obj.AnalyseMood();
+
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+
+        }
     }
+
 }
+

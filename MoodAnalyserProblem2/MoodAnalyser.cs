@@ -4,6 +4,8 @@ using System.Text;
 
 namespace MoodAnalyserProblem2
 {
+    
+
     public class MoodAnalyser
     {
         public string message;
@@ -20,8 +22,14 @@ namespace MoodAnalyserProblem2
         public string AnalyseMood()
         {
             try
+            { 
+            if ((this.message.Equals(string.Empty)))
             {
-                if (message.Contains("Sad"))
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY, "Mood should not be empty");
+            }
+            else
+            {
+                if (this.message.Contains("Sad"))
                 {
                     return "Sad";
                 }
@@ -30,10 +38,14 @@ namespace MoodAnalyserProblem2
                     return "Happy";
                 }
             }
-            catch
+            
+            }catch(NullReferenceException)
             {
-                return "Happy";
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL, "Mood should not be NULL");
             }
+
+            
+         
         }
 
     }

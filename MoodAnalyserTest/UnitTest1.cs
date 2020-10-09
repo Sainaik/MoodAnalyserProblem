@@ -16,10 +16,10 @@ namespace MoodAnalyserTest
 
             string expected = "Sad";
 
-            MoodAnalyser obj = new MoodAnalyser();
+            MoodAnalyser obj = new MoodAnalyser(message);
 
             //Act
-            string actual =obj.AnalyseMood(message);
+            string actual =obj.AnalyseMood();
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -31,14 +31,14 @@ namespace MoodAnalyserTest
         public void AnalyseMood_ShouldReturn_Happy()
         {
             //Arraneg
-            string message = "I am in Any Mood";
+            string message = "I am in Happy Mood";
 
             string expected = "Happy";
 
-            MoodAnalyser obj = new MoodAnalyser();
+            MoodAnalyser obj = new MoodAnalyser(message);
 
             //Act
-            string actual = obj.AnalyseMood(message);
+            string actual = obj.AnalyseMood();
 
             //Assert
             Assert.AreEqual(expected, actual);

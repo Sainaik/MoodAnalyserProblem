@@ -4,8 +4,8 @@ using System.Text;
 
 namespace MoodAnalyserProblem2
 {
-    
-
+ 
+ 
     public class MoodAnalyser
     {
         public string message;
@@ -25,7 +25,7 @@ namespace MoodAnalyserProblem2
             { 
             if ((this.message.Equals(string.Empty)))
             {
-                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY, "Mood should not be empty");
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY, "Message should not be empty");
             }
             else
             {
@@ -41,7 +41,7 @@ namespace MoodAnalyserProblem2
             
             }catch(NullReferenceException)
             {
-                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL, "Mood should not be NULL");
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL, "Message should not be NULL");
             }
 
             

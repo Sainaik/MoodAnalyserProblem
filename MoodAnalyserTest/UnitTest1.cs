@@ -98,6 +98,44 @@ namespace MoodAnalyserTest
         }
 
 
+        [TestMethod]
+        public void MoodAnalyseClass_GivenWrongClassName_ShouldReturn_NOClassException()
+        {
+            string expected = "Class not found";
+            try
+            {
+                string message = null;
+                string wrongClassName = "MoodAnalyserProblem2.MoodAnalyzer";
+                object  moodAnalyser = new MoodAnalyser(message);
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyse(wrongClassName, "MoodAnalyzer");
+                moodAnalyser.Equals(obj);
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+
+        }
+
+
+        [TestMethod]
+        public void MoodAnalyseClass_GivenWrongConstructorName_ShouldReturn_NoConstructorException()
+        {
+            string expected = "Constructor not found";
+            try
+            {
+                string message = null;
+                string wrongConstructorName = "MoodAnalyzer";
+                object moodAnalyser = new MoodAnalyser(message);
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserProblem2.MoodAnalyser", wrongConstructorName);
+                moodAnalyser.Equals(obj);
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+
+        }
     }
 
 }

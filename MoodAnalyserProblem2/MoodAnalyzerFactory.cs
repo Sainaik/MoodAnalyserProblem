@@ -16,22 +16,30 @@ namespace MoodAnalyserProblem2
 
             if (regex.IsMatch(className))
             {
+
                 try
                 {
                     Assembly executing = Assembly.GetExecutingAssembly();
                     Type moodAnalyseType = executing.GetType(className);
                     return Activator.CreateInstance(moodAnalyseType);
+
                 }
                 catch (ArgumentNullException)
                 {
                     throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class is not found");
+
                 }
             }
             else
             {
                 throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constuctor is not found");
+
             }
-        }     
+
+
+        }
+
+       
     }
 
 }

@@ -8,7 +8,7 @@ namespace MoodAnalyserProblem2
 {
     public class MoodAnalyzerFactory
     {
-
+        // UC4
         public static Object CreateMoodAnalyse(string className, string constructorName)
         {
             String pattern = @"." + constructorName + "$";
@@ -26,20 +26,44 @@ namespace MoodAnalyserProblem2
                 }
                 catch (ArgumentNullException)
                 {
-                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class is not found");
+                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class not found");
 
                 }
             }
             else
             {
-                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constuctor is not found");
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constructor not found");
 
             }
 
 
         }
 
-       
-    }
+        //UC5
+        public static Object CreateMoodAnalyserUsingParameterisedConstructors(string className, string constructorName)
+        {
+            Type type = typeof(MoodAnalyser);
 
+            if (type.Name.Equals(className) || type.FullName.Equals(className))
+            {
+
+                if (type.Name.Equals(constructorName))
+                {
+                    ConstructorInfo ctor = type.GetConstructor(new[] { typeof(string) });
+
+                    Object instance = ctor.Invoke(new object[] { "Happy" });
+                    return instance;
+                }
+                else
+                {
+                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constructor not found");
+                }
+            }
+            else
+            {
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class not found");
+
+            }
+        }
+    }
 }

@@ -9,10 +9,10 @@ namespace MoodAnalyserTest
     public class UnitTest1
     {
         [TestMethod]
-        public void AnalyseMood_ShouldReturn_CustomExceptionTypeNULL_givenNULL()
+        public void AnalyseMood_givenNULL_ShouldReturn_CustomExceptionTypeNULL()
         {
             
-            string expected = "Message should not be NULL";
+            string expected = "Mood should not be NULL";
 
             try
             {
@@ -31,14 +31,14 @@ namespace MoodAnalyserTest
 
 
         [TestMethod]
-        public void AnalyseMood_ShouldReturn_CustomExceptionTypeEmpty_givenEmpty()
+        public void AnalyseMood_givenEmpty_ShouldReturn_CustomExceptionTypeEmpty()
         {
 
-            string expected = "Message should not be empty";
+            string expected = "Mood should not be empty";
 
             try
             {
-                string message = "";
+                string message = string.Empty;
                 MoodAnalyser obj = new MoodAnalyser(message);
                 string actual = obj.AnalyseMood();
 
@@ -57,7 +57,7 @@ namespace MoodAnalyserTest
             string expected = "Sad";
             try
             {
-                string message = "He is Sad";
+                string message = "They are Sad";
                 MoodAnalyser obj = new MoodAnalyser(message);
                 string actual = obj.AnalyseMood();
                 Assert.AreEqual(expected, actual);
@@ -68,7 +68,6 @@ namespace MoodAnalyserTest
             }
 
         }
-
 
         [TestMethod]
         public void AnalyseMood_ShouldReturn_CustomExceptionTypeEmpty_givenHappy()
@@ -76,7 +75,7 @@ namespace MoodAnalyserTest
             string expected = "Happy";
             try
             {
-                string message = "He is Happy";
+                string message = "He is always Happy";
                 MoodAnalyser obj = new MoodAnalyser(message);
                 string actual = obj.AnalyseMood();
                 Assert.AreEqual(expected, actual);
@@ -88,7 +87,7 @@ namespace MoodAnalyserTest
 
         }
 
-
+       
     }
 
 }

@@ -12,9 +12,10 @@ namespace MoodAnalyserProblem2
         public static Object CreateMoodAnalyse(string className, string constructorName)
         {
             String pattern = @"." + constructorName + "$";
-            Regex regex = new Regex(pattern);
+            //Regex regex = new Regex(pattern);
+            Match result = Regex.Match(className, pattern);
 
-            if (regex.IsMatch(className))
+            if (result.Success)
             {
 
                 try
@@ -26,13 +27,13 @@ namespace MoodAnalyserProblem2
                 }
                 catch (ArgumentNullException)
                 {
-                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class is not found");
+                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class not found");
 
                 }
             }
             else
             {
-                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constuctor is not found");
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constructor not found");
 
             }
 

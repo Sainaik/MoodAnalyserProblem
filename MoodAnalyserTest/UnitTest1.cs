@@ -147,7 +147,7 @@ namespace MoodAnalyserTest
             expected.Equals(obj);
         }
 
-        //Test Case 5.1
+        //Test Case 5.2
         [TestMethod]
         public void MoodAnalyseClass_GivenWrongClassName_ShouldReturn_NoClassException_UsingParameterizedConstrucor()
         {
@@ -167,7 +167,7 @@ namespace MoodAnalyserTest
 
         }
 
-        //Test case 4.3
+        //Test case 5.3
         [TestMethod]
         public void MoodAnalyseClass_GivenWrongConstructorName_ShouldReturn_NoConstructorException_UsingParameterizedConstrucor()
         {

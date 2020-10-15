@@ -75,6 +75,31 @@ namespace MoodAnalyserProblem2
             }
         }
 
+        public static string MoodAnalysersSetField(string message, string fieldName)
+        {
+            try
+            {
+                if (message == null)
+                {
+                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL, "Mood should not be NULL");
+                }
+
+                MoodAnalyser obj = new MoodAnalyser();
+
+                Type type = Type.GetType("MoodAnalyserProblem2.MoodAnalyser");
+
+                FieldInfo field = type.GetField(fieldName);
+
+                field.SetValue(obj, message);
+
+                return obj.message;
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_FIELD, "Field not found");
+            }
+
+        }
 
 
     }

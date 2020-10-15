@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyserProblem2;
-
+using System;
 
 namespace MoodAnalyserTest
 {
@@ -87,63 +87,16 @@ namespace MoodAnalyserTest
             }
 
         }
-        //Test case 4.1
-        [TestMethod]
-        public void GivenMoodAnalyseClass_ShouldReturn_MoodAnalyserObject()
-        {
-            string message = null;
-            object expected = new MoodAnalyser(message);
-            object obj = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserProblem2.MoodAnalyser", "MoodAnalyser");
-            expected.Equals(obj);
-        }
-
-        //Test case 4.2
-        [TestMethod]
-        public void MoodAnalyseClass_GivenWrongClassName_ShouldReturn_NoClassException()
-        {
-            string expected = "Class not found";
-            try
-            {
-                string message = null;
-                string wrongClassName = "MoodAnalyserProblem2.MoodAnalyzer";
-                object moodAnalyser = new MoodAnalyser(message);
-                object obj = MoodAnalyzerFactory.CreateMoodAnalyse(wrongClassName, "MoodAnalyzer");
-                moodAnalyser.Equals(obj);
-            }
-            catch (MoodAnalysisException e)
-            {
-                Assert.AreEqual(expected, e.Message);
-            }
-
-        }
-
-        //Test case 4.3
-        [TestMethod]
-        public void MoodAnalyseClass_GivenWrongConstructorName_ShouldReturn_NoConstructorException()
-        {
-            string expected = "Constructor not found";
-            try
-            {
-                string message = null;
-                string wrongConstructorName = "MoodAnalyzer";
-                object moodAnalyser = new MoodAnalyser(message);
-                object obj = MoodAnalyzerFactory.CreateMoodAnalyse("MoodAnalyserProblem2.MoodAnalyser", wrongConstructorName);
-                moodAnalyser.Equals(obj);
-            }
-            catch (MoodAnalysisException e)
-            {
-                Assert.AreEqual(expected, e.Message);
-            }
-
-        }
 
         //Test Case 5.1
         [TestMethod]
-        public void GivenMoodAnalyseClass_ShouldReturn_MoodAnalyserObject_UsingParameterizedConstrucor()
+        [DataRow(null)]
+        [DataRow("Happy")]
+        public void GivenMoodAnalyseClass_ShouldReturn_MoodAnalyserObject_UsingParameterizedConstrucor(string message)
         {
-            string message = "Happy";
+
             object expected = new MoodAnalyser(message);
-            object obj = MoodAnalyzerFactory.CreateMoodAnalyserUsingParameterisedConstructors("MoodAnalyserProblem2.MoodAnalyser", "MoodAnalyser");
+            object obj = MoodAnalyzerFactory.CreateMoodAnalyserUsingParameterisedConstructors("MoodAnalyserProblem2.MoodAnalyser", "MoodAnalyser", message);
             expected.Equals(obj);
         }
 
@@ -157,7 +110,7 @@ namespace MoodAnalyserTest
                 string message = "Happy";
                 string wrongClassName = "MoodAnalyserProblem2.MoodAnalyzer";
                 object moodAnalyser = new MoodAnalyser(message);
-                object obj = MoodAnalyzerFactory.CreateMoodAnalyserUsingParameterisedConstructors(wrongClassName, "MoodAnalyzer");
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyserUsingParameterisedConstructors(wrongClassName, "MoodAnalyzer",message);
                 moodAnalyser.Equals(obj);
             }
             catch (MoodAnalysisException e)
@@ -177,7 +130,7 @@ namespace MoodAnalyserTest
                 string message = "Happy";
                 string wrongConstructorName = "MoodAnalyzer";
                 object moodAnalyser = new MoodAnalyser(message);
-                object obj = MoodAnalyzerFactory.CreateMoodAnalyserUsingParameterisedConstructors("MoodAnalyserProblem2.MoodAnalyser", wrongConstructorName);
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyserUsingParameterisedConstructors("MoodAnalyserProblem2.MoodAnalyser", wrongConstructorName,message);
                 moodAnalyser.Equals(obj);
             }
             catch (MoodAnalysisException e)
@@ -185,6 +138,23 @@ namespace MoodAnalyserTest
                 Assert.AreEqual(expected, e.Message);
             }
 
+        }
+
+        [DataRow("Happy","Happy")]
+        [DataRow("Sad", "Sad")]
+        [TestMethod]
+
+        public void MoodAnalyserFactory_ToInvokeMethod(string message, string expected)
+        {
+            try
+            {
+                string methodName = "AnalyseMood";
+                string actual = MoodAnalyzerFactory.InvokeAnalyseMoodMethodUsingReflection(message,methodName);
+                Assert.AreEqual(expected, actual);
+            }catch(MoodAnalysisException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
 

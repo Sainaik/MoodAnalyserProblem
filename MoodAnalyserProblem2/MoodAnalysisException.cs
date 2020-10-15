@@ -7,7 +7,7 @@ namespace MoodAnalyserProblem2
     public class MoodAnalysisException : Exception
     {
 
-        public enum ExceptionType { EMPTY, NULL, NO_SUCH_METHOD, NO_SUCH_CLASS }
+        public enum ExceptionType { EMPTY, NULL, NO_SUCH_METHOD, NO_SUCH_CLASS, NO_SUCH_FIELD }
 
         public readonly ExceptionType type;
         public MoodAnalysisException( ExceptionType type,string message): base(message)

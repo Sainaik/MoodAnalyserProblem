@@ -140,6 +140,7 @@ namespace MoodAnalyserTest
 
         }
 
+        //UC 6.1 & 6.2
         [DataRow("Happy","Happy")]
         [DataRow("Sad", "Sad")]
         [TestMethod]
@@ -157,6 +158,51 @@ namespace MoodAnalyserTest
             }
         }
 
+        //UC7
+        // tc 7.1
+        [TestMethod]
+        public void GivenMessageDynamically_returnMessage()
+        {
+            string expected = "Iam so happy";
+
+            string actual = MoodAnalyzerFactory.MoodAnalysersSetField("Iam so happy", "message");
+            Assert.AreEqual(expected, actual);
+        }
+
+        // tc 7.2
+        [TestMethod]
+        public void GivenImproperFieldName_ThrowNoSuchFieldException()
+        {
+
+           string expected = "Field not found";
+            try
+            {
+                MoodAnalyzerFactory.MoodAnalysersSetField("Iam so happy", "wrongMessage");
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+
+        }
+
+        // tc 7.3
+
+        [TestMethod]
+        public void GivenNullMessage_ThrowException()
+        {
+            string expected = "Mood should not be NULL"; 
+
+            try
+            {
+                MoodAnalyzerFactory.MoodAnalysersSetField(null, "message");
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual(expected, e.Message);
+            }
+
+        }
 
     }
 

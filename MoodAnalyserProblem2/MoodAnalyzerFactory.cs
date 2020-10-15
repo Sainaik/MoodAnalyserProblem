@@ -8,43 +8,17 @@ namespace MoodAnalyserProblem2
 {
     public class MoodAnalyzerFactory
     {
-        // UC4
-        public static Object CreateMoodAnalyse(string className, string constructorName)
-        {
-            String pattern = @"." + constructorName + "$";
-            //Regex regex = new Regex(pattern);
-            Match result = Regex.Match(className, pattern);
-
-            if (result.Success)
-            {
-
-                try
-                {
-                    Assembly executing = Assembly.GetExecutingAssembly();
-
-                    //Get type of object from loaded assembly
-                    Type moodAnalyseType = executing.GetType(className);
-
-                    return Activator.CreateInstance(moodAnalyseType);
-
-                }
-                catch (ArgumentNullException)
-                {
-                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Class not found");
-
-                }
-            }
-            else
-            {
-                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Constructor not found");
-
-            }
-
-
-        }
-
+        /// <summary>
+        /// UC5
+        /// Creating a MoodAnalyser object with parameterised constructor using Reflection
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="constructorName"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         //UC5
-        public static Object CreateMoodAnalyserUsingParameterisedConstructors(string className, string constructorName)
+
+        public static Object CreateMoodAnalyserUsingParameterisedConstructors(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyser);
 
@@ -53,8 +27,8 @@ namespace MoodAnalyserProblem2
 
                 if (type.Name.Equals(constructorName))
                 {
-                    ConstructorInfo ctor = type.GetConstructor(new[] { typeof(string) });
-                    Object instance = ctor.Invoke(new object[] { "Happy" });
+                    ConstructorInfo constructorObject = type.GetConstructor(new[] { typeof(string) });
+                    Object instance = constructorObject.Invoke(new object[] { message });
                     return instance;
                 }
                 else
@@ -68,6 +42,40 @@ namespace MoodAnalyserProblem2
 
             }
         }
+
+      /// <summary>
+      /// UC6 
+      /// Invoking AnalyseMoodMethod Using Reflection 
+      /// called in UnitTest1.cs 
+      /// </summary>
+      /// <param name="message"></param>
+      /// <param name="methodName"></param>
+      /// <returns></returns>
+      
+        public static string InvokeAnalyseMoodMethodUsingReflection(string message, string methodName)
+        {
+            try
+            {
+
+                Type type = Type.GetType("MoodAnalyserProblem2.MoodAnalyser");
+
+                Object moodAnalyserObject = MoodAnalyzerFactory.CreateMoodAnalyserUsingParameterisedConstructors(type.FullName, type.Name, message);
+
+                MethodInfo method = type.GetMethod(methodName);
+
+                string actualMessage =(string) method.Invoke(moodAnalyserObject, null);
+
+                //object instance = method.Invoke(moodAnalyserObject, null);
+                return actualMessage;
+
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "Method not found");
+            }
+        }
+
+
 
     }
 }

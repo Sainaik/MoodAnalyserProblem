@@ -21,7 +21,10 @@ namespace MoodAnalyserProblem2
                 try
                 {
                     Assembly executing = Assembly.GetExecutingAssembly();
+
+                    //Get type of object from loaded assembly
                     Type moodAnalyseType = executing.GetType(className);
+
                     return Activator.CreateInstance(moodAnalyseType);
 
                 }
@@ -51,7 +54,6 @@ namespace MoodAnalyserProblem2
                 if (type.Name.Equals(constructorName))
                 {
                     ConstructorInfo ctor = type.GetConstructor(new[] { typeof(string) });
-
                     Object instance = ctor.Invoke(new object[] { "Happy" });
                     return instance;
                 }
@@ -66,5 +68,6 @@ namespace MoodAnalyserProblem2
 
             }
         }
+
     }
 }
